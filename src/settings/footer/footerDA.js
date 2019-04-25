@@ -135,12 +135,14 @@ exports.updateFooterDetails = function (req, res) {
                 footerData[0].alternativeContactNo = req.body.alternativeContactNo;
                 footerData[0].mailId = req.body.mailId;
                 footerData[0].logoImageName = req.body.logoImageName;
-                footerData[0].save({}, function (err, footerData) {
+                footerData[0].save( function (err, footerDa) {
                 if (err) {
+                    console.log(err);
                     res.status(500).send({
                         message: 1
                     });
                 } else {
+                    console.log(footerDa);
                     Footer.find({}).select().exec(function (err, footerData) {
                         if (err) {
                             res.status(500).send({
