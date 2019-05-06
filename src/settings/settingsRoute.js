@@ -3,6 +3,8 @@ var adsMgr  = require('./ads/adsMgr');
 var bannersMgr = require('./banner/bannerMgr');
 var promotionsMgr = require('./promotions/promotionsMgr');
 var footerMgr = require('./footer/footerMgr');
+var supportMgr = require('./support/supportMgr');
+var contactUsMgr = require('./contact-us/contactUsMgr');
 
 module.exports = function(app) {
 
@@ -55,4 +57,26 @@ module.exports = function(app) {
     app.route('/details/:id')
     .put(footerMgr.updateFooterDetails);
 
+    // support
+
+ app.route('/support')
+    .post(supportMgr.createSupport);
+
+    app.route('/supportDetails')
+    .get(supportMgr.getSupportDetails);
+
+    app.route('/supportdetails/:id')
+    .put(supportMgr.updateSupportDetails);
+
+    // contact -us
+
+    app.route('/contactus')
+    .post(contactUsMgr.createContactUs);
+
+    app.route('/contactDetails')
+    .get(contactUsMgr.getContactDetails);
+
+    app.route('/contactdetails/:id')
+    .put(contactUsMgr.updateContactDetails);
+    
 }
