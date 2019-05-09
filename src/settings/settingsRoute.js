@@ -5,6 +5,7 @@ var promotionsMgr = require('./promotions/promotionsMgr');
 var footerMgr = require('./footer/footerMgr');
 var supportMgr = require('./support/supportMgr');
 var contactUsMgr = require('./contact-us/contactUsMgr');
+var privacyPolicyMgr = require('./privacy-policy/privacyPolicyMgr');
 
 module.exports = function(app) {
 
@@ -78,5 +79,19 @@ module.exports = function(app) {
 
     app.route('/contactdetails/:id')
     .put(contactUsMgr.updateContactDetails);
+
+
+    // privacy policy
+
+    // contact -us
+
+    app.route('/privacypolicy')
+    .post(privacyPolicyMgr.createPrivacyPolicy);
+
+     app.route('/privacypolicy')
+    .get(privacyPolicyMgr.getPrivacyPolicy);
+
+   app.route('/editprivacypolicy/:id')
+    .put(privacyPolicyMgr.updatePrivacyPolicy);
     
 }
