@@ -6,6 +6,8 @@ var footerMgr = require('./footer/footerMgr');
 var supportMgr = require('./support/supportMgr');
 var contactUsMgr = require('./contact-us/contactUsMgr');
 var privacyPolicyMgr = require('./privacy-policy/privacyPolicyMgr');
+var faqMgr = require('./faqs/faqMgr');
+var termsAndUseMgr = require('./terms-use/termsAndUseMgr');
 
 module.exports = function(app) {
 
@@ -83,7 +85,7 @@ module.exports = function(app) {
 
     // privacy policy
 
-    // contact -us
+  
 
     app.route('/privacypolicy')
     .post(privacyPolicyMgr.createPrivacyPolicy);
@@ -92,6 +94,38 @@ module.exports = function(app) {
     .get(privacyPolicyMgr.getPrivacyPolicy);
 
    app.route('/editprivacypolicy/:id')
-    .put(privacyPolicyMgr.updatePrivacyPolicy);
-    
+    .put(privacyPolicyMgr.updatePrivacyPolicy); 
+
+    // faq 
+
+    app.route('/faq')
+    .post(faqMgr.createFAQ);
+
+    app.route('/faq')
+    .get(faqMgr.getFAQ);
+
+    app.route('/singlefaq/:id')
+    .get(faqMgr.getSingleFAQ);
+
+    app.route('/faq/:faqId')
+    .delete(faqMgr.deleteFAQ);
+
+    app.route('/editFAQ/:id')
+    .put(faqMgr.updateFAQ); 
+
+    // terms
+
+    app.route('/termsanduse')
+    .post(termsAndUseMgr.createTerms);
+
+    app.route('/termsanduse')
+    .get(termsAndUseMgr.getTerms);
+
+    app.route('/terms/:id')
+    .delete(termsAndUseMgr.deleteTerms);
+
+    app.route('/editTerms/:id')
+    .put(termsAndUseMgr.updateTerms);
+
+     
 }
